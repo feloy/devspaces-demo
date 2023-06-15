@@ -38,7 +38,7 @@ commands:
     commandLine: ls
     component: tools
     workingDir: /
-  id: run
+  id: ls-tools
 - exec:
     commandLine: |
       GOPATH=${PROJECT_SOURCE}/.go \
@@ -93,6 +93,7 @@ components:
     mountSources: true
   name: runtime
 - container:
+    dedicatedPod: true
     image: docker.io/busybox
     args:
     - tail
