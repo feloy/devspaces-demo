@@ -35,6 +35,11 @@ commands:
     workingDir: ${PROJECT_SOURCE}
   id: run
 - exec:
+    commandLine: ls
+    component: tools
+    workingDir: /
+  id: run
+- exec:
     commandLine: |
       GOPATH=${PROJECT_SOURCE}/.go \
       GOCACHE=${PROJECT_SOURCE}/.cache \
@@ -87,6 +92,13 @@ components:
     memoryLimit: 1024Mi
     mountSources: true
   name: runtime
+- container:
+    image: docker.io/busybox
+    args:
+    - tail
+    - -f
+    - /dev/null
+  name: tools
 metadata:
   description: Go (version 1.18.x) is an open source programming language that makes
     it easy to build simple, reliable, and efficient software.
